@@ -28,6 +28,15 @@ class Personajes(db.Model):
     hair_color = db.Column(db.String(250), nullable=False)
     eye_color = db.Column(db.String(250), nullable=False)
     url = db.Column(db.String(250), nullable=False)
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "gender": self.gender,
+            "hair_color": self.hair_color,
+            "eye_colo": self.eye_color,
+            # do not serialize the password, its a security breach
+        }
 
 class Planetas(db.Model):
     __tablename__ = 'planetas'
@@ -38,6 +47,15 @@ class Planetas(db.Model):
     population = db.Column(db.Integer, nullable=False)
     terrain = db.Column(db.String(250), nullable=False)
     url = db.Column(db.String(250), nullable=False)
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "diameter": self.diameter,
+            "population": self.population,
+            "terrain": self.terrain,
+            # do not serialize the password, its a security breach
+        }
 
 
 class Favoritos(db.Model):
